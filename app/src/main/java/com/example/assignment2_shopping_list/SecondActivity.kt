@@ -16,7 +16,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_list.*
 
-class NewActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,29 +27,29 @@ class NewActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
 
-        val users = ArrayList<User>()
+        val fruits = ArrayList<Fruit>()
 
-        users.add(User("Apple","$10"))
-        users.add(User("Banana","$20"))
-        users.add(User("Orange","$30"))
-        users.add(User("Cherry","$40"))
-        users.add(User("Blackberries","$50"))
-        users.add(User("Breadfruit","$60"))
-        users.add(User("Carambola","$70"))
-        users.add(User("Cranberries","$480"))
-        users.add(User("Elderberries","$290"))
-        users.add(User("Currant","$760"))
-        users.add(User("Mulberry","$340"))
-        users.add(User("Mango","$190"))
-        users.add(User("Akee","$900"))
+        fruits.add(Fruit("Apple","$10"))
+        fruits.add(Fruit("Banana","$20"))
+        fruits.add(Fruit("Orange","$30"))
+        fruits.add(Fruit("Cherry","$40"))
+        fruits.add(Fruit("Blackberries","$50"))
+        fruits.add(Fruit("Breadfruit","$60"))
+        fruits.add(Fruit("Carambola","$70"))
+        fruits.add(Fruit("Cranberries","$480"))
+        fruits.add(Fruit("Elderberries","$290"))
+        fruits.add(Fruit("Currant","$760"))
+        fruits.add(Fruit("Mulberry","$340"))
+        fruits.add(Fruit("Mango","$190"))
+        fruits.add(Fruit("Akee","$900"))
 
 
 
-        val adapter = CustomAdapter(users).apply {
+        val adapter = SecondAdapter(fruits).apply {
             setListener(View.OnClickListener {
-                Log.d("click","textViewName click")
+                Log.d("click","fruitName click")
                 val intent = Intent()
-                intent.putExtra("textViewName", (it as TextView).text)
+                intent.putExtra("fruitName", (it as TextView).text)
 
                 setResult(Activity.RESULT_OK, intent)
                 finish()

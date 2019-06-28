@@ -23,15 +23,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn.setOnClickListener {
-            val intent = Intent(this, NewActivity::class.java)
+            val intent = Intent(this, SecondActivity::class.java)
             startActivityForResult(intent, 1)
         }
 
         recyclerView_Menu = findViewById(R.id.recyclerViewMenu) as RecyclerView
         recyclerView_Menu.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
-        recyclerView_Menu.adapter = MenuAdapter()
+        recyclerView_Menu.adapter = MainAdapter()
 
-        val new_adapter = MenuAdapter()
+        val new_adapter = MainAdapter()
         recyclerView_Menu.adapter = new_adapter
 
     }
@@ -41,13 +41,13 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             var display_fruit : String = ""
             data?.run {
-                val fruits : String = data.getStringExtra("textViewName")
+                val fruits : String = data.getStringExtra("fruitName")
 
                 Log.d(MainActivity::class.java.simpleName,fruits)
                 display_fruit = fruits
             }
             Toast.makeText(this, "Click ${display_fruit} ", Toast.LENGTH_SHORT).show()
-            (recyclerView_Menu.adapter as? MenuAdapter)?.additem(display_fruit)
+            (recyclerView_Menu.adapter as? MainAdapter)?.additem(display_fruit)
         }
     }
 }
