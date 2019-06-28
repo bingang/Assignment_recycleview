@@ -15,8 +15,9 @@ import android.widget.Toast.*
 import kotlinx.android.synthetic.main.layout_buy.*
 import kotlinx.android.synthetic.main.layout_list.*
 
-class MenuAdapter (val userList: ArrayList<Buy>) : RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
+class MenuAdapter() : RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
 
+    var userList = ArrayList<Buy>()
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val v = LayoutInflater.from(p0.context).inflate(R.layout.layout_buy,p0,false)
@@ -34,6 +35,7 @@ class MenuAdapter (val userList: ArrayList<Buy>) : RecyclerView.Adapter<MenuAdap
     }
 
     public fun additem(item: String) {
+        userList.add(Buy(item))
         notifyDataSetChanged()
     }
 

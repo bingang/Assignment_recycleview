@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity() {
 
-    val buys = ArrayList<Buy>()
     private lateinit var recyclerView_Menu : RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView_Menu = findViewById(R.id.recyclerViewMenu) as RecyclerView
         recyclerView_Menu.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
+        recyclerView_Menu.adapter = MenuAdapter()
 
-        recyclerView_Menu.adapter = MenuAdapter(ArrayList<Buy>())
+        val new_adapter = MenuAdapter()
+        recyclerView_Menu.adapter = new_adapter
 
     }
 
@@ -46,10 +47,7 @@ class MainActivity : AppCompatActivity() {
                 display_fruit = fruits
             }
             Toast.makeText(this, "Click ${display_fruit} ", Toast.LENGTH_SHORT).show()
-            buys.add(Buy(display_fruit))
-            val new_adapter = MenuAdapter(buys)
-            recyclerView_Menu.adapter = new_adapter
-//            (recyclerView_Menu.adapter as? MenuAdapter)?.additem(display_fruit)
+            (recyclerView_Menu.adapter as? MenuAdapter)?.additem(display_fruit)
         }
     }
 }
