@@ -22,7 +22,7 @@ class MenuAdapter (val userList: ArrayList<Buy>) : RecyclerView.Adapter<MenuAdap
         val v = LayoutInflater.from(p0.context).inflate(R.layout.layout_buy,p0,false)
         return ViewHolder(v)
     }
-mn
+
     override fun getItemCount(): Int {
         return userList.size
     }
